@@ -68,12 +68,12 @@ require 'rails_helper'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
        end
-       it "誕生日が空では登録できない。" do
-        @user.birth_year = ""
-        @user.valid?
-        binding.pry
-        expect(@user.errors.full_messages).to include("Password can't be blank")
-       end
+      #  it "誕生日が空では登録できない。" do
+      #   @user.birth_year = ""
+      #   @user.valid?
+      #   binding.pry
+      #   expect(@user.errors.full_messages).to include("Password can't be blank")
+      #  end
        it "性(漢字)が空では登録できない。" do
        end
        it "名(漢字)が空では登録できない。" do

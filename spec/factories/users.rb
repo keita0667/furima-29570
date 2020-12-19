@@ -8,6 +8,6 @@ FactoryBot.define do
     lastname_kanji        {Gimei.kanji}
     firstname_kana        {Gimei.katakana}
     lastname_kana         {Gimei.katakana}
-    birth_year            {1000}
+    
   end
 end
