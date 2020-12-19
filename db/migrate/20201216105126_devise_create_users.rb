@@ -35,16 +35,17 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
 
       t.timestamps null: false
-      t.string :firstname_kanji
-      t.string :lastname_kanji
-      t.string :firstname_kana
-      t.string :lastname_kana
+      t.string :first_name
+      t.string :last_name
+      t.string :first_name_kana
+      t.string :last_name_kana
       t.datetime :birth_date
     end
     end
-
-    add_index :users, :email,                unique: true
-    add_index :users, :reset_password_token, unique: true
+    # remove_index :users, :email
+    # remove_index :users, :reset_password_token
+    # add_index :users, :email,                unique: true
+    # add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
