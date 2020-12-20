@@ -41,23 +41,23 @@ Things you may want to cover:
 | first_name_kana    | string             | null: false | #名前(カナ)
 
 * * Association
-- has_many : item
-- has_many : purchase
+- has_many : items
+- has_many : purchases
 
 <!-- itemsテーブル -->
 
 * itemsテーブル(商品テーブル)
-| Column            | Type    | Options     |
-| ------            | ------- | ------------|
-| name              | string  | null: false | #商品名
-| info              | text    | null: false | #商品の説明
-| price             | integer | null: false | #販売価格
-| category          | string  | null: false | #カテゴリー
-| sales_status      | string  | null: false | #商品の状態
-| shipping_fee      | string  | null: false | #配送料の負担
-| prefecture        | string  | null: false | #発送元の地域
-| scheduled_delivery| string  | null: false | #発送までの日数
-| user_id           | integer | null: false, foreign_key: true | #user_id外部キー参照
+| Column               | Type    | Options     |
+| ------               | ------- | ------------|
+| name                 | string  | null: false | #商品名
+| info                 | text    | null: false | #商品の説明
+| price                | integer | null: false | #販売価格
+| category_id          | integer | null: false | #カテゴリー
+| sales_status_id      | integer | null: false | #商品の状態
+| shipping_fee_id      | integer | null: false | #配送料の負担
+| prefecture_id        | integer | null: false | #発送元の地域
+| scheduled_delivery_id| integer | null: false | #発送までの日数
+| user_id              | integer | null: false, foreign_key: true | #user_id外部キー参照
 
 
 * * Association
