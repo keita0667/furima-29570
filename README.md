@@ -29,16 +29,16 @@ Things you may want to cover:
 <!-- usersテーブル -->
 
 * usersテーブル
-| Column          | Type               | Options     |
-| ------          | -------            | ------------| 
-| email           | string             | null: false, unique: true | #email
-| password        | encrypted_password | null: false | #password
-| nickname        | string             | null: false | #nickname
-| birth_date      | date               | null: false | #生年月日
-| last_name       | string             | null: false | #苗字
-| first_name      | string             | null: false | #名前
-| last_name_kana  | string             | null: false | #苗字(カナ)
-| first_name_kana | string             | null: false | #名前(カナ)
+| Column             | Type               | Options     |
+| ------             | -------            | ------------| 
+| email              | string             | null: false, unique: true | #email
+| encrypted_password | string             | null: false | #password
+| nickname           | string             | null: false | #nickname
+| birth_date         | date               | null: false | #生年月日
+| last_name          | string             | null: false | #苗字
+| first_name         | string             | null: false | #名前
+| last_name_kana     | string             | null: false | #苗字(カナ)
+| first_name_kana    | string             | null: false | #名前(カナ)
 
 * * Association
 - has_many : item
@@ -49,10 +49,9 @@ Things you may want to cover:
 * itemsテーブル(商品テーブル)
 | Column            | Type    | Options     |
 | ------            | ------- | ------------|
-| image             | string  | null: false | #出品画像
 | name              | string  | null: false | #商品名
 | info              | text    | null: false | #商品の説明
-| price             | string  | null: false | #販売価格
+| price             | integer | null: false | #販売価格
 | category          | string  | null: false | #カテゴリー
 | sales_status      | string  | null: false | #商品の状態
 | shipping_fee      | string  | null: false | #配送料の負担
@@ -63,7 +62,6 @@ Things you may want to cover:
 
 * * Association
 - belongs_to : user
-- has_many : purchase
 - has_one : purchase
 
 <!-- purchasesテーブル -->
@@ -73,8 +71,6 @@ Things you may want to cover:
 | ------          | ------- | ------------ |
 | user_id         | integer | null: false, foreign_key: true  | #user_id外部キー参照
 | item_id         | integer | null: false, foreign_key: true  | #item_id外部キー参照
-# addressesテーブルの都道府県カラムのActiveHash
-| prefecture_id   | integer | null: false  | 
 
 * * Association
 - belongs_to : user, item
@@ -92,6 +88,7 @@ Things you may want to cover:
 | building_name   | string  |             | #建物名
 | postal_code     | string  | null: false | #郵便番号
 | phone_number    | string  | null: false | #電話番号
+| purchase_id     | integer | null: false, foreign_key: true  | #purchase_id外部キー参照
 
 
 * * Association
