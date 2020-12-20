@@ -39,13 +39,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.string :first_name_kana
       t.string :last_name_kana
-      t.datetime :birth_date
+      t.date :birth_date
     end
-    end
+
     # remove_index :users, :email
     # remove_index :users, :reset_password_token
-    # add_index :users, :email,                unique: true
-    # add_index :users, :reset_password_token, unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
+end

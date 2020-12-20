@@ -15,17 +15,9 @@ class User < ApplicationRecord
     validates :last_name_kana, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "Full-width katakana characters"}
     validates :first_name_kana, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "Full-width katakana characters"}
   end
-    validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
-                      uniqueness: { case_sensitive: false }
-    validates :password, length: { minimum: 6 } 
-
-    # def password.nil?
-    #   if validates :password, presence: true
-        
-    #   else
-    #     return nil
-        
-    #   end
+    # validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
+    #                   uniqueness: { case_sensitive: false }
+    # validates :password, length: { minimum: 6 } 
       
     validates :password, format: { with: /\A[a-z0-9]+\z/i, message: "Include both letters and numbers"}
 end
