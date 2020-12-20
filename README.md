@@ -23,6 +23,9 @@ Things you may want to cover:
 
 * ...
 
+
+
+
 <!-- usersテーブル -->
 
 * usersテーブル
@@ -61,31 +64,34 @@ Things you may want to cover:
 * * Association
 - belongs_to : user
 - has_many : purchase
+- has_one : purchase
 
 <!-- purchasesテーブル -->
 
 * purchasesテーブル(購入テーブル)
 | Column          | Type    | Options      |
 | ------          | ------- | ------------ |
-| user_id         | integer | null: false, foreign_key: true | #user_id外部キー参照
-| item_id         | integer | null: false, foreign_key: true | #item_id外部キー参照
+| user_id         | integer | null: false, foreign_key: true  | #user_id外部キー参照
+| item_id         | integer | null: false, foreign_key: true  | #item_id外部キー参照
+# addressesテーブルの都道府県カラムのActiveHash
+| prefecture_id   | integer | null: false  | 
 
 * * Association
-- belongs_to : user
+- belongs_to : user, item
 - has_one : address
 
 
 <!-- addressesテーブル -->
 
 * addressesテーブル
-| Column          | Type   | Options     |
-| ------          | -------| ------------|
-| prefecture      | string | null: false | #都道府県
-| city            | string | null: false | #市区町村
-| address         | string | null: false | #番地
-| building_name   | string |             | #建物名
-| postal code     | string | null: false | #郵便番号
-| phone number    | string | null: false | #電話番号
+| Column          | Type    | Options     |
+| ------          | ------- | ------------|
+| prefecture_id   | integer | null: false | #都道府県
+| city            | string  | null: false | #市区町村
+| address         | string  | null: false | #番地
+| building_name   | string  |             | #建物名
+| postal_code     | string  | null: false | #郵便番号
+| phone_number    | string  | null: false | #電話番号
 
 
 * * Association
