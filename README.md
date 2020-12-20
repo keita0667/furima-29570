@@ -23,60 +23,70 @@ Things you may want to cover:
 
 * ...
 
+<!-- usersテーブル -->
 
-*usersテーブル
-| Column          | Type   | Options     |
-| ------          | -------| ------------|
-| email           | string             | null: false |
-| password        | encrypted_password | null: false |
-| nickname        | string | null: false |
-| birth_date      | date | null: false |
-| last name       | string | null: false |
-| first name      | string | null: false |
-| last name kana  | string | null: false |
-| first name kana | string | null: false |
+* usersテーブル
+| Column          | Type               | Options     |
+| ------          | -------            | ------------| 
+| email           | string             | null: false, unique: true | #email
+| password        | encrypted_password | null: false | #password
+| nickname        | string             | null: false | #nickname
+| birth_date      | date               | null: false | #生年月日
+| last_name       | string             | null: false | #苗字
+| first_name      | string             | null: false | #名前
+| last_name_kana  | string             | null: false | #苗字(カナ)
+| first_name_kana | string             | null: false | #名前(カナ)
 
-**Association
-- has_many : listing
+* * Association
+- has_many : item
+- has_many : purchase
+
+<!-- itemsテーブル -->
+
+* itemsテーブル(商品テーブル)
+| Column            | Type    | Options     |
+| ------            | ------- | ------------|
+| image             | string  | null: false | #出品画像
+| name              | string  | null: false | #商品名
+| info              | text    | null: false | #商品の説明
+| price             | string  | null: false | #販売価格
+| category          | string  | null: false | #カテゴリー
+| sales_status      | string  | null: false | #商品の状態
+| shipping_fee      | string  | null: false | #配送料の負担
+| prefecture        | string  | null: false | #発送元の地域
+| scheduled_delivery| string  | null: false | #発送までの日数
+| user_id           | integer | null: false, foreign_key: true | #user_id外部キー参照
 
 
-*Purchasesテーブル(購入テーブル)
-| Column          | Type   | Options     |
-| ------          | -------| ------------|
-| user_id           | string | null: false |
-| item_id     | string | null: false |
-
-**Association
-- belongs_to : listing
-
-
-*Listingテーブル(出品テーブル)
-| Column          | Type   | Options     |
-| ------          | -------| ------------|
-| image           | string | null: false |
-| name            | string | null: false |
-| info            | string | null: false |
-| price           | string | null: false |
-| category        | string | null: false |
-| sales status    | string | null: false |
-
-**Association
+* * Association
 - belongs_to : user
 - has_many : purchase
 
+<!-- purchasesテーブル -->
 
-*Addressesテーブル
+* purchasesテーブル(購入テーブル)
+| Column          | Type    | Options      |
+| ------          | ------- | ------------ |
+| user_id         | integer | null: false, foreign_key: true | #user_id外部キー参照
+| item_id         | integer | null: false, foreign_key: true | #item_id外部キー参照
+
+* * Association
+- belongs_to : user
+- has_one : address
+
+
+<!-- addressesテーブル -->
+
+* addressesテーブル
 | Column          | Type   | Options     |
 | ------          | -------| ------------|
-| prefecture      | string | null: false |
-| city            | string | null: false |
-| address         | string | null: false |
-| building_name   | string | null: false |
-| postal code     | string | null: false |
-| phone number    | string | null: false |
+| prefecture      | string | null: false | #都道府県
+| city            | string | null: false | #市区町村
+| address         | string | null: false | #番地
+| building_name   | string |             | #建物名
+| postal code     | string | null: false | #郵便番号
+| phone number    | string | null: false | #電話番号
 
-都道府県カラムもactivehashで実装するため、activehashが使えるようなカラム名と型にしましょう。
-カード以外の商品購入時に入力する情報（郵便番号や電話番号、建物名など）を保存するカラムを全て用意しましょう。
 
-**Association
+* * Association
 - belongs_to : purchase
