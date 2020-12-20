@@ -1,23 +1,17 @@
-class ItemsController < ApplicationController
-  def index
-    @items = Item.all
-  end
-
-  def new
-    @item = Item.new
-  end
-
-  def create
-    Item.create(item_params)
-  end
-
-  private
-
-  def item_params
-    params.require(:item).permit(
-      :name, :info, :price, :category_id, :sales_status_id,
-      :shipping_fee_id, :prefecture_id, :scheduled_delivery_id, :user_id
-    )
+class CreateItems < ActiveRecord::Migration[6.0]
+  def change
+    create_table :items do |t|
+      t.string  :name
+      t.text    :info
+      t.integer :price
+      t.integer :category_id
+      t.integer :sales_status_id
+      t.integer :shipping_fee_id
+      t.integer :prefecture_id
+      t.integer :scheduled_delivery_id
+      t.integer :user_id
+      t.timestamps
+    end
   end
 end
 
