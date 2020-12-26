@@ -9,31 +9,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品' do
     context '商品出品がうまくいくとき' do
-      it '商品画像と商品名と商品の説明が存在すれば出品できる' do
-        expect(@item).to be_valid
-      end
-      it 'カテゴリーが"---"以外であれば出品できる' do
-        @item.category_id = "2"
-        expect(@item).to be_valid
-      end
-      it '商品の状態が"---"以外であれば出品できる' do
-        @item.sales_status_id = "2"
-        expect(@item).to be_valid
-      end
-      it '配送料の負担が"---"以外であれば出品できる' do
-        @item.shipping_fee_id = "2"
-        expect(@item).to be_valid
-      end
-      it '発送元の地域が"---"以外であれば出品できる' do
-        @item.prefecture_id = "2"
-        expect(@item).to be_valid
-      end
-      it '発送までの日数が"---"以外であれば出品できる' do
-        @item.scheduled_delivery_id = "2"
-        expect(@item).to be_valid
-      end
-      it '販売価格が300円以上、9,999,999円以下であれば出品できる' do
-        @item.price = "1000"
+      it '全ての値が存在すれば出品できる' do
         expect(@item).to be_valid
       end
 
@@ -93,6 +69,11 @@ RSpec.describe Item, type: :model do
         @item.price = "10000000"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
+      end
+      it '価格に英字が含まれる場合は出品できない' do
+        @item.price = "ab"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Half-width-number")
       end
     end
   end
