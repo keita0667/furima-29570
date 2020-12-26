@@ -253,6 +253,8 @@ a {
 
 .item-img-content {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .item-img {
