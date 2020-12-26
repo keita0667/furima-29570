@@ -31,27 +31,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Info can't be blank")
       end
       it 'カテゴリーが"---"では出品できない' do
-        @item.category_id = "1"
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category Select")
       end
       it '商品の状態が"---"では出品できない' do
-        @item.sales_status_id = "1"
+        @item.sales_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Sales status Select")
       end
       it '配送料の負担が"---"では出品できない' do
-        @item.shipping_fee_id = "1"
+        @item.shipping_fee_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee status Select")
       end
       it '発送元の地域が"---"では出品できない' do
-        @item.prefecture_id = "1"
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture Select")
       end
       it '発送までの日数が"---"では出品できない' do
-        @item.scheduled_delivery_id = "1"
+        @item.scheduled_delivery_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Scheduled delivery Select")
       end
@@ -61,19 +61,19 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it '価格が299円以下では出品できない' do
-        @item.price = "299"
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
       it '価格が10,000,000円以上では出品できない' do
-        @item.price = "10000000"
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
       it '価格に英字が含まれる場合は出品できない' do
         @item.price = "ab"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width-number")
+        expect(@item.errors.full_messages).to include("Price Half-width number")
       end
     end
   end
