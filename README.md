@@ -42,7 +42,7 @@ Things you may want to cover:
 
 * * Association
 - has_many : items
-- has_many : purchases
+- has_many : orders
 
 <!-- itemsテーブル -->
 
@@ -62,7 +62,7 @@ Things you may want to cover:
 
 * * Association
 - belongs_to : user
-- has_one : purchase
+- has_one : order
 
 <!-- purchasesテーブル -->
 
@@ -88,8 +88,8 @@ Things you may want to cover:
 | building_name   | string  |             | #建物名
 | postal_code     | string  | null: false | #郵便番号
 | phone_number    | string  | null: false | #電話番号
-| purchase_id     | integer | null: false, foreign_key: true  | #purchase_id外部キー参照
+| order_id     | integer | null: false, foreign_key: true  | #purchase_id外部キー参照
 
 
 * * Association
-- belongs_to : purchase
+- belongs_to : order
