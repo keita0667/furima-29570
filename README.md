@@ -80,6 +80,7 @@ Things you may want to cover:
 <!-- addressesテーブル -->
 
 * addressesテーブル
+
 | Column          | Type    | Options     |
 |-----------------|-------- |-------------|
 | prefecture_id   | integer | null: false | #都道府県
@@ -88,7 +89,7 @@ Things you may want to cover:
 | building_name   | string  |             | #建物名
 | postal_code     | string  | null: false | #郵便番号
 | phone_number    | string  | null: false | #電話番号
-| order_id        | integer | null: false, foreign_key: true  | #purchase_id外部キー参照 
+| order_id        | integer | null: false, foreign_key: true | #purchase_id外部キー参照 
 
 
 * * Association
