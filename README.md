@@ -29,8 +29,9 @@ Things you may want to cover:
 <!-- usersテーブル -->
 
 * usersテーブル
+
 | Column             | Type               | Options     |
-| ------             | -------            | ------------| 
+|--------------------|--------------------|-------------| 
 | email              | string             | null: false, unique: true | #email
 | encrypted_password | string             | null: false | #password
 | nickname           | string             | null: false | #nickname
@@ -47,8 +48,9 @@ Things you may want to cover:
 <!-- itemsテーブル -->
 
 * itemsテーブル(商品テーブル)
+
 | Column               | Type    | Options     |
-| ------               | ------- | ------------|
+|----------------------|---------|-------------|
 | name                 | string  | null: false | #商品名
 | info                 | text    | null: false | #商品の説明
 | price                | integer | null: false | #販売価格
@@ -67,8 +69,9 @@ Things you may want to cover:
 <!-- purchasesテーブル -->
 
 * purchasesテーブル(購入テーブル)
+
 | Column          | Type    | Options      |
-| ------          | ------- | ------------ |
+|-----------------|---------|--------------|
 | user_id         | integer | null: false, foreign_key: true  | #user_id外部キー参照
 | item_id         | integer | null: false, foreign_key: true  | #item_id外部キー参照
 
